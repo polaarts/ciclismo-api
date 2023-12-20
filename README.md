@@ -1,6 +1,6 @@
 # API of Cycling Products
 
-This is an API that delivers the information extracted from different websites selling cycling products (for now limited to this category).
+This is an API that delivers the information extracted from different websites selling cycling products (for now limited to this category). In this case I have implemented the Domain Driven Design (DDD) practice in order to facilitate the scalability and maintainability of the code.
 
 ## Endpoints
 
