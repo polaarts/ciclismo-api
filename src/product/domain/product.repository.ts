@@ -1,6 +1,6 @@
-import { type ProductEntity } from './product.entity'
+import { ProductEntity } from './product.entity'
 
-export interface productRepository {
+export interface ProductRepository {
   findProductById: (id: string) => Promise<ProductEntity | null>
   getAllProducts: () => Promise<ProductEntity[] | null>
 }

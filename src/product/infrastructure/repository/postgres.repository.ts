@@ -1,10 +1,10 @@
-import { type productRepository } from '../../domain/product.repository'
+import { type ProductRepository } from '../../domain/product.repository'
 import { type ProductEntity } from '../../domain/product.entity'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-export class PostgresRepository implements productRepository {
+export class PostgresRepository implements ProductRepository {
   async findProductById (id: string): Promise<ProductEntity | null> {
     const product = await prisma.products.findUnique({
       where: {

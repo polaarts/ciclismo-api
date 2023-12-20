@@ -1,11 +1,9 @@
-import { type productRepository } from '../domain/product.repository'
+import { type ProductRepository } from '../domain/product.repository'
 import { type ProductValue } from '../domain/product.value'
 export class ProductUseCase {
-  constructor (private readonly productRepository: productRepository) {
+  constructor (private readonly productRepository: ProductRepository) {}
 
-  }
-
-  public async findProductById ({ id }: { id: string }): Promise<ProductValue | null> {
+  public async findProductById (id: string): Promise<ProductValue | null> {
     const product = await this.productRepository.findProductById(id)
     if (product === null) return null
     return product
