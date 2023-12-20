@@ -1,5 +1,6 @@
-import { type ProductRepository } from '../../domain/product.repository'
-import { type ProductEntity } from '../../domain/product.entity'
+/* eslint-disable @typescript-eslint/consistent-type-imports */
+import { ProductRepository } from '../../domain/product.repository'
+import { ProductEntity } from '../../domain/product.entity'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
