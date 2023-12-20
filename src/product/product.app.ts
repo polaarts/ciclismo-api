@@ -1,8 +1,5 @@
 import express, { type Request, type Response } from 'express'
-import dotenv from 'dotenv'
 import ProductController from './infrastructure/controller/product.controller'
-
-dotenv.config()
 
 const productApp = express.Router()
 

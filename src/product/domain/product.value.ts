@@ -1,19 +1,12 @@
-import { type ProductEntity } from './product.entity'
+import { ProductEntity } from './product.entity'
 
 export class ProductValue implements ProductEntity {
-  id: string
-  id_tienda: string
-  name: string
-  price: number
-  image: string
-  url: string
-
-  constructor ({ id, id_tienda: tienda, name, price, image, url }: ProductEntity) {
-    this.id = id
-    this.id_tienda = tienda
-    this.name = name
-    this.price = price
-    this.image = image
-    this.url = url
-  }
+  constructor (
+    public readonly id: string,
+    public readonly id_tienda:string,
+    public readonly name: string,
+    public readonly price: number,
+    public readonly image: string,
+    public readonly url: string
+    ) {}
 }
