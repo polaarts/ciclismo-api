@@ -14,4 +14,10 @@ export class ProductUseCase {
     if (products === null) return []
     return products
   }
+
+  public async searchProductByName (keyword: string, page: number, quantity: number): Promise<ProductValue[]> {
+    const products = await this.productRepository.searchProductByName(keyword, page, quantity)
+    if (products === null) return []
+    return products
+  }
 }

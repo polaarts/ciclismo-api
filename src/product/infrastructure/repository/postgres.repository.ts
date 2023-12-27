@@ -39,4 +39,15 @@ export class PostgresRepository implements ProductRepository {
       return null
     }
   }
+
+  async searchProductByName (keyword: string, page: number, quantity: number): Promise<ProductEntity[] | null> {
+    const query = `SELECT * FROM products WHERE name ILIKE '%${keyword}%' LIMIT ${quantity} OFFSET ${(page - 1) * quantity}`
+    try {
+      const product = await pool.query(query)
+      return product.rows
+    } catch (error) {
+      console.error(error)
+      return null
+    }
+  }
 }

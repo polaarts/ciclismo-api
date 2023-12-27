@@ -23,8 +23,20 @@ const ProductController = {
     const id = req.params.id
     const product = await productUseCase.findProductById(id)
     res.send(product)
-  }
+  },
 
+  searchProductByName: async (req: Request, res: Response) => {
+    const keyword = req.params.keyword
+    const { page, quantity } = req.query
+
+    if (typeof quantity === 'string' && typeof page === 'string') {
+      const products = await productUseCase.searchProductByName(keyword, parseInt(page), parseInt(quantity))
+      res.send(products)
+    } else {
+      const products = await productUseCase.searchProductByName(keyword, 1, 20)
+      res.send(products)
+    }
+  }
 }
 
 export default ProductController

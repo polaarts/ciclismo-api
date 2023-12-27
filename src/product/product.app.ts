@@ -12,4 +12,8 @@ productApp.get('/:id', (req: Request, res: Response, next) => {
   ProductController.getProductById(req, res).catch(next)
 })
 
+productApp.get('/search/:keyword', (req: Request, res: Response, next) => {
+  ProductController.searchProductByName(req, res).catch(next)
+})
+
 export default productApp
