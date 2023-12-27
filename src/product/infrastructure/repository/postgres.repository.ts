@@ -40,10 +40,14 @@ export class PostgresRepository implements ProductRepository {
     }
   }
 
-//   async getProductsPaginated (quantity: number): Promise<ProductEntity[] | null> {
-//     const products = await prisma.products.findMany({
-//       take: quantity
-//     })
-//     return products
-//   }
+  async getProductsPaginated (page: number, quantity: number): Promise<ProductEntity[] | null> {
+    const query = `SELECT * FROM products LIMIT ${quantity} OFFSET ${(page - 1) * quantity}`
+    try {
+      const product = await pool.query(query)
+      return product.rows
+    } catch (error) {
+      console.error(error)
+      return null
+    }
+  }
 }

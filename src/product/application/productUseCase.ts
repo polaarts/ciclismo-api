@@ -15,9 +15,9 @@ export class ProductUseCase {
     return products
   }
 
-  // public async getProductsPaginated (quantity: number): Promise<ProductValue[]> {
-  //   const products = await this.productRepository.getProductsPaginated(quantity)
-  //   if (products === null) return []
-  //   return products
-  // }
+  public async getProductsPaginated (page: number, quantity: number): Promise<ProductValue[]> {
+    const products = await this.productRepository.getProductsPaginated(page, quantity)
+    if (products === null) return []
+    return products
+  }
 }

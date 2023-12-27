@@ -12,13 +12,13 @@ const ProductController = {
     res.send(products)
   },
 
-  // getProductsPaginated: async (req: Request, res: Response) => {
-  //   const { quantity } = req.query
-  //   if (typeof quantity === 'string') {
-  //     const products = await productUseCase.getProductsPaginated(parseInt(quantity))
-  //     res.send(products)
-  //   }
-  // },
+  getProductsPaginated: async (req: Request, res: Response) => {
+    const { page, quantity } = req.query
+    if (typeof quantity === 'string' && typeof page === 'string') {
+      const products = await productUseCase.getProductsPaginated(parseInt(page), parseInt(quantity))
+      res.send(products)
+    }
+  },
 
   getProductById: async (req: Request, res: Response) => {
     const id = req.params.id
