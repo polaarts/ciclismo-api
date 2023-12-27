@@ -1,7 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { ProductEntity } from './product.entity'
+import { ProductEntity } from '../domain/product.entity'
 
 export interface ProductRepository {
   findProductById: (id: string) => Promise<ProductEntity | null>
-  getAllProducts: () => Promise<ProductEntity[] | null>
+  getProducts: () => Promise<ProductEntity[] | null>
+  // getProductsPaginated: (quantity: number) => Promise<ProductEntity[] | null>
 }

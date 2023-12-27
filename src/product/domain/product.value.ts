@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import { ProductEntity } from './product.entity'
+import { ProductEntity } from '../domain/product.entity'
 
 export class ProductValue implements ProductEntity {
   constructor (
