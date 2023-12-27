@@ -5,10 +5,7 @@ const productApp = express.Router()
 
 productApp.get('/', (req: Request, res: Response, next) => {
   ProductController.getProducts(req, res).catch(next)
-})
-
-productApp.get('/filter', (req: Request, res: Response, next) => {
-  ProductController.getProductsPaginated(req, res).catch(next)
+  console.log(req.query)
 })
 
 productApp.get('/:id', (req: Request, res: Response, next) => {

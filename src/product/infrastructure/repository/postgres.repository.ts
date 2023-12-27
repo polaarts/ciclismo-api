@@ -29,18 +29,7 @@ export class PostgresRepository implements ProductRepository {
     }
   }
 
-  async getProducts (): Promise<ProductEntity[] | null> {
-    const query = 'SELECT * FROM products'
-    try {
-      const product = await pool.query(query)
-      return product.rows
-    } catch (error) {
-      console.error(error)
-      return null
-    }
-  }
-
-  async getProductsPaginated (page: number, quantity: number): Promise<ProductEntity[] | null> {
+  async getProducts (page: number, quantity: number): Promise<ProductEntity[] | null> {
     const query = `SELECT * FROM products LIMIT ${quantity} OFFSET ${(page - 1) * quantity}`
     try {
       const product = await pool.query(query)

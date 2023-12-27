@@ -8,14 +8,13 @@ const productUseCase = new ProductUseCase(postgresRepository)
 const ProductController = {
 
   getProducts: async (req: Request, res: Response) => {
-    const products = await productUseCase.getProducts()
-    res.send(products)
-  },
-
-  getProductsPaginated: async (req: Request, res: Response) => {
     const { page, quantity } = req.query
+
     if (typeof quantity === 'string' && typeof page === 'string') {
-      const products = await productUseCase.getProductsPaginated(parseInt(page), parseInt(quantity))
+      const products = await productUseCase.getProducts(parseInt(page), parseInt(quantity))
+      res.send(products)
+    } else {
+      const products = await productUseCase.getProducts(1, 20)
       res.send(products)
     }
   },
