@@ -20,4 +20,9 @@ export class ProductUseCase {
     if (products === null) return []
     return products
   }
+
+  public async getTotalPages (quantity: number): Promise<number> {
+    const totalPages = await this.productRepository.getTotalPages(quantity)
+    return totalPages
+  }
 }

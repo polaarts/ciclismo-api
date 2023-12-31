@@ -31,6 +31,7 @@ export class PostgresRepository implements ProductRepository {
 
   async getProducts (page: number, quantity: number): Promise<ProductEntity[] | null> {
     const query = `SELECT * FROM products LIMIT ${quantity} OFFSET ${(page - 1) * quantity}`
+
     try {
       const product = await pool.query(query)
       return product.rows
@@ -48,6 +49,19 @@ export class PostgresRepository implements ProductRepository {
     } catch (error) {
       console.error(error)
       return null
+    }
+  }
+
+  async getTotalPages (quantity: number): Promise<number> {
+    const query = 'SELECT COUNT(*) FROM products'
+    try {
+      const product = await pool.query(query)
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      const count = parseInt(product.rows[0].count)
+      return Math.ceil(count / quantity)
+    } catch (error) {
+      console.error(error)
+      return 0
     }
   }
 }
