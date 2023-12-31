@@ -13,7 +13,7 @@ const ProductController = {
     if (typeof quantity === 'string' && typeof page === 'string') {
       const products = await productUseCase.getProducts(parseInt(page), parseInt(quantity))
       const totalPages = await productUseCase.getTotalPages(parseInt(quantity))
-      res.send({ products, totalPages, page, quantity })
+      res.send({ products, totalPages, page: parseInt(page), quantity: parseInt(quantity) })
     } else {
       const products = await productUseCase.getProducts(1, 20)
       const totalPages = await productUseCase.getTotalPages(20)
