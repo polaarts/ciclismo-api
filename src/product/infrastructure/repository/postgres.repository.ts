@@ -30,7 +30,7 @@ export class PostgresRepository implements ProductRepository {
   }
 
   async getProducts (page: number, quantity: number): Promise<ProductEntity[] | null> {
-    const query = `SELECT * FROM products ORDER BY name LIMIT ${quantity} OFFSET ${(page - 1) * quantity}`
+    const query = `SELECT * FROM products LIMIT ${quantity} OFFSET ${(page - 1) * quantity}`
 
     try {
       const product = await pool.query(query)
@@ -42,7 +42,7 @@ export class PostgresRepository implements ProductRepository {
   }
 
   async searchProductByName (keyword: string, page: number, quantity: number): Promise<ProductEntity[] | null> {
-    const query = `SELECT * FROM products ORDER BY name WHERE name ILIKE '%${keyword}%' LIMIT ${quantity} OFFSET ${(page - 1) * quantity}`
+    const query = `SELECT * FROM products WHERE name ILIKE '%${keyword}%' LIMIT ${quantity} OFFSET ${(page - 1) * quantity}`
     try {
       const product = await pool.query(query)
       return product.rows
